@@ -1,0 +1,207 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Пример использования jQuery embed video</title>
+    <script src="http://yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+    <link href='http://yastatic.net/highlightjs/8.2/styles/solarized_light.min.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+    <body>
+
+        <header>
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-7 py-4">
+                            <h4 class="text-white">About</h4>
+                            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                        </div>
+                        <div class="col-sm-4 offset-md-1 py-4">
+                            <h4 class="text-white">Contact</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                                <li><a href="#" class="text-white">Like on Facebook</a></li>
+                                <li><a href="#" class="text-white">Email me</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+                <div class="container d-flex justify-content-between">
+                    <a href="#" class="navbar-brand d-flex align-items-center">
+                        <svg aria-hidden="true" data-prefix="fab" width="40" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="mr-3"><path fill="red" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" class=""></path></svg>
+                        <strong>jQuery.embedVideo.min.js</strong>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main role="main">
+
+            <section class="jumbotron text-center rounded-0 mb-0">
+                <div class="container">
+                    <h1 class="jumbotron-heading">Embed YouTube Video (~3kb)</h1>
+                    <p class="lead text-muted">
+                        Адаптивное использование YouTube видео на странице, не замедляя ее загрузку.<br>
+                    </p>
+                    <p>
+                        <a href="https://github.com/mahlenko/embedVideo/archive/master.zip" class="btn btn-primary my-2">Скачать (.zip)</a>
+                        <a href="https://github.com/mahlenko/embedVideo" class="btn btn-secondary my-2">Открыть на GitHub</a>
+                    </p>
+                </div>
+            </section>
+
+            <div class="py-5">
+                <div class="container">
+
+                    <p>
+                        Вместо плеера на страницу будет загружено превью, с кнопкой просмотра видео,<br>
+                        и только по клику на него загрузиться плеер YouTube и начнется воспроизведение вашего ролика.
+                    </p>
+
+                    <div class="row">
+                        <div class="col-12 col-md-4 mb-4">
+                            <div class="embed-video" data-id="hVvEISFw9w0" data-autoplay="1" width="100%" height="200"></div>
+                            <strong>Пример 1</strong><br>
+                            <small class="text-muted">Автоматическое проигрывание плеера</small>
+                        </div>
+                        <div class="col-12 col-md-4 mb-4">
+                            <div class="embed-video" data-id="1La4QzGeaaQ" data-controls="0" data-autoplay="1" width="100%" height="200"></div>
+                            <strong>Пример 2</strong><br>
+                            <small class="text-muted">Не отображать элементы управления видео.</small>
+                        </div>
+                        <div class="col-12 col-md-4 mb-4">
+                            <div class="embed-video" data-id="mHUOCxVT5ro" data-alternative-cover="https://i.ytimg.com/vi/Fuf9MTgt5ts/maxresdefault.jpg"  data-autoplay="1" width="100%" height="200"></div>
+                            <strong>Пример 3</strong><br>
+                            <small class="text-muted">Использование альтернативной обложки превью.</small>
+                        </div>
+                    </div>
+
+                    <h2>Использование</h2>
+                    <p>Плагин создан с использование jQuery, поэтому не забудьте подключить сначала его, например через
+                        <a href="http://code.jquery.com/">jQuery CDN</a></p>
+                    <p>Скачайте архив с <a href="https://github.com/mahlenko/embedVideo/archive/master.zip">GitHub</a> или использовуйте Bower: <span class="badge badge-secondary">bower install jquery-embed-video</span>.</p>
+
+                    <p>Добавьте контейнеры для ваших видео используя следующий код:</p>
+                    <pre><code class="html"><-- Пример 1 -->
+&lt;div class="embed-youtube" data-id="hVvEISFw9w0" data-autoplay="1" width="100%" height="200"&gt;&lt;/div&gt;</code></pre>
+
+                    <pre><code class="html"><-- Пример 2 -->
+&lt;div class="embed-youtube" data-id="1La4QzGeaaQ" data-autoplay="1" data-controls="0" width="100%" height="200"&gt;&lt;/div&gt;</code></pre>
+
+                    <pre><code class="html"><-- Пример 3 -->
+&lt;div class="embed-youtube" data-id="mHUOCxVT5ro" data-autoplay="1" data-alternative-cover="https://i.ytimg.com/vi/Fuf9MTgt5ts/maxresdefault.jpg" width="100%" height="200"&gt;&lt;/div&gt;</code></pre>
+
+                    <p>Подключите скрипты перед закрывающим тегом <span class="badge badge-secondary">&lt;/body&gt;</span></p>
+                    <pre><code class="javascript">&lt;script type="text/javascript" src="{path_to_script}/jquery.embedVideo.min.js"&gt;&lt;/script&gt;</code></pre>
+                    <pre><code class="javascript">&lt;script type="text/javascript"&gt;
+    $(document).ready(function(){
+        $('.embed-video').embedVideo({
+            /* options */
+        });
+    });
+&lt;/script&gt;</code></pre>
+
+
+                    <h2>Параметры</h2>
+                    <p>
+                        Настройки плагина или отдельного контейнера через атрибут [data-*].
+                        Поддерживает все параметры плеера
+                        <a href="https://developers.google.com/youtube/player_parameters">https://developers.google.com/youtube/player_parameters</a>
+                        и дополнительные настройки планина описанные ниже в таблице.
+                    </p>
+
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>[data-*]</th>
+                                <th>options</th>
+                                <th>доступные значения</th>
+                                <th>описание</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>id</td>
+                                <td>id</td>
+                                <td>{string}</td>
+                                <td>ID видео</td>
+                            </tr>
+                            <tr>
+                                <td>size-preview</td>
+                                <td>sizePreview</td>
+                                <td>default, mqdefault, hqdefault, sddefault, maxresdefault</td>
+                                <td>Размер изображения превью, генерируемых YouTube.</td>
+                            </tr>
+                            <tr>
+                                <td>auto-size-preview</td>
+                                <td>autoSizePreview</td>
+                                <td><strong>true</strong>/false</td>
+                                <td>Определять автоматически размер превью, исходя из размеров контейнера.</td>
+                            </tr>
+                            <tr>
+                                <td>alternative-cover</td>
+                                <td>alternativeCover</td>
+                                <td>{string}</td>
+                                <td>Ссылка на альтернативную обложку превью. Не работает с <strong>auto-size-preview</strong>.</td>
+                            </tr>
+                            <tr>
+                                <td>image-play-container</td>
+                                <td>imagePlayContainer</td>
+                                <td>{string} &lt;тег&gt;</td>
+                                <td>HTML тег кнопки "play" на превью. По-умолчанию SVG иконка. Можно заменить на собственную иконку SVG или IMG.</td>
+                            </tr>
+                            <tr>
+                                <td>image-play-opacity</td>
+                                <td>imagePlayOpacity</td>
+                                <td>0 - 1 (по-умолчанию 0.85)</td>
+                                <td>Прозрачность кнопки "play" если задана, будет заметна анимация при наведении на контейнер с видео.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+
+        <script
+                src="http://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+
+        <!--<script type="text/javascript" src="jquery.youtube.js"></script>-->
+        <script type="text/javascript" src="jquery.embedVideo.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.embed-video').embedVideo();
+            });
+        </script>
+
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript" >
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+            ym(51595031, "init", {
+                id:51595031,
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true
+            });
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/51595031" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
+    </body>
+</html>

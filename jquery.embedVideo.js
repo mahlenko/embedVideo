@@ -240,10 +240,11 @@
 
             var query = [];
             $.each(options, function(key, value){
-                if (skip.indexOf(key) == -1 && value != '') {
+                if (skip.indexOf(key) == -1 && value !== '') {
                     query.push(key + '=' + value);
                 }
             });
+            console.log(query);
 
             return query.join('&');
         },
@@ -253,11 +254,22 @@
          * @param options
          */
         init: function(options) {
-            var $this = $(this);
+            var $this = $(this),
+                height = $this.height(),
+                width = $this.attr('width');
+
+            if ($this.attr('width').indexOf('%')) {
+                width = $this.width();
+            }
+
+            if (height == 0) {
+                height = $this.attr('height');
+            }
+
 
             /* Поиск и ссылки на превью размером подходящим под наш контейнер */
             if (options.autoSizePreview && options.sizePreview == '') {
-                pluginMethods.autoSizePreview($this.attr('width'), options);
+                pluginMethods.autoSizePreview(width, options);
             }
 
             /* Формируем ссылку на превью видео, если не указана ссылка на альтернативный */
@@ -270,8 +282,8 @@
             $this.css({
                 'background' : '#000 url('+previewFile+') center',
                 'background-size' : 'cover',
-                width:  $this.attr('width'),
-                height: $this.attr('height')
+                width:  width,
+                height: height
             });
 
             /* Создаем контейнер по клику на который создадим iframe с видео */
