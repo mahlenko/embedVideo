@@ -14,24 +14,6 @@
     <body>
 
         <header>
-            <div class="collapse bg-dark" id="navbarHeader">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-md-7 py-4">
-                            <h4 class="text-white">About</h4>
-                            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-                        </div>
-                        <div class="col-sm-4 offset-md-1 py-4">
-                            <h4 class="text-white">Contact</h4>
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                                <li><a href="#" class="text-white">Email me</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
                     <a href="#" class="navbar-brand d-flex align-items-center">
@@ -72,12 +54,12 @@
                             <small class="text-muted">Автоматическое проигрывание плеера</small>
                         </div>
                         <div class="col-12 col-md-4 mb-4">
-                            <div class="embed-video" data-id="1La4QzGeaaQ" data-controls="0" data-autoplay="1" width="100%" height="200"></div>
+                            <div class="embed-video" data-id="1La4QzGeaaQ" data-controls="0" width="100%" height="200"></div>
                             <strong>Пример 2</strong><br>
-                            <small class="text-muted">Не отображать элементы управления видео.</small>
+                            <small class="text-muted">Не отображать элементы управления видео и автовоспроизведение через iFrame API.</small>
                         </div>
                         <div class="col-12 col-md-4 mb-4">
-                            <div class="embed-video" data-id="mHUOCxVT5ro" data-alternative-cover="https://i.ytimg.com/vi/Fuf9MTgt5ts/maxresdefault.jpg"  data-autoplay="1" width="100%" height="200"></div>
+                            <div class="embed-video" data-id="mHUOCxVT5ro" data-alternative-cover="https://i.ytimg.com/vi/Fuf9MTgt5ts/sddefault.jpg"  data-autoplay="1" width="100%" height="200"></div>
                             <strong>Пример 3</strong><br>
                             <small class="text-muted">Использование альтернативной обложки превью.</small>
                         </div>
@@ -89,14 +71,14 @@
                     <p>Скачайте архив с <a href="https://github.com/mahlenko/embedVideo/archive/master.zip">GitHub</a> или использовуйте Bower: <span class="badge badge-secondary">bower install jquery-embed-video</span>.</p>
 
                     <p>Добавьте контейнеры для ваших видео используя следующий код:</p>
-                    <pre><code class="html"><-- Пример 1 -->
+                    <pre><code class="html">&lt;!-- Пример 1 -->
 &lt;div class="embed-youtube" data-id="hVvEISFw9w0" data-autoplay="1" width="100%" height="200"&gt;&lt;/div&gt;</code></pre>
 
-                    <pre><code class="html"><-- Пример 2 -->
-&lt;div class="embed-youtube" data-id="1La4QzGeaaQ" data-autoplay="1" data-controls="0" width="100%" height="200"&gt;&lt;/div&gt;</code></pre>
+                    <pre><code class="html">&lt;!-- Пример 2 -->
+&lt;div class="embed-youtube" data-id="1La4QzGeaaQ" data-controls="0" width="100%" height="200"&gt;&lt;/div&gt;</code></pre>
 
-                    <pre><code class="html"><-- Пример 3 -->
-&lt;div class="embed-youtube" data-id="mHUOCxVT5ro" data-autoplay="1" data-alternative-cover="https://i.ytimg.com/vi/Fuf9MTgt5ts/maxresdefault.jpg" width="100%" height="200"&gt;&lt;/div&gt;</code></pre>
+                    <pre><code class="html">&lt;!-- Пример 3 -->
+&lt;div class="embed-youtube" data-id="mHUOCxVT5ro" data-autoplay="1" data-alternative-cover="https://i.ytimg.com/vi/Fuf9MTgt5ts/sddefault.jpg" width="100%" height="200"&gt;&lt;/div&gt;</code></pre>
 
                     <p>Подключите скрипты перед закрывающим тегом <span class="badge badge-secondary">&lt;/body&gt;</span></p>
                     <pre><code class="javascript">&lt;script type="text/javascript" src="{path_to_script}/jquery.embedVideo.min.js"&gt;&lt;/script&gt;</code></pre>
@@ -108,6 +90,35 @@
     });
 &lt;/script&gt;</code></pre>
 
+                    <h2>Использование JS API</h2>
+                    <p>Для использования API подключите скрипты:</p>
+                    <pre><code class="javascript">&lt;script type="text/javascript" src="{path_to_script}/jquery.embedVideo.min.js"&gt;&lt;/script&gt;</code></pre>
+                    <pre><code class="javascript">&lt;script type="text/javascript" src="https://www.youtube.com/iframe_api"&gt;</script></code></pre>
+
+                    <p>Документация по iFrame API: <a
+                            href="https://developers.google.com/youtube/iframe_api_reference#Functions">https://developers.google.com/youtube/iframe_api_reference#Functions</a></p>
+
+                    <p>Вместо предыдущего примера используйте следующее подключение скрипта</p>
+<pre><code class="javascript">/**
+ * Функция которая выполнится сразу,
+ * после загрузки iFrame API на странице
+ */
+function onYouTubeIframeAPIReady() {
+    $('.embed-video').embedVideo({            // Подключаем embedVideo.js
+        enablejsapi: 1,                       // указываем, что будем использовать API
+        origin: {ваш_домен},                  // меры безопасности для IFrame API
+        callback: function(iframe) {
+            /* создаем объект плеера */
+            player = new YT.Player(iframe, {
+                events: {
+                    'onReady': function(){
+                        player.playVideo();   // автопроигрывание видео через API
+                    }
+                }
+            });
+        }
+    });
+}</code></pre>
 
                     <h2>Параметры</h2>
                     <p>
@@ -168,7 +179,7 @@
                                 <td>callback</td>
                                 <td></td>
                                 <td>function(player) {}</td>
-                                <td>Колбэк функция, которая выполнится после создания iframe.</td>
+                                <td>Колбэк функция, которая выполнится после создания iframe (после клика по превью).</td>
                             </tr>
                         </tbody>
                     </table>
@@ -183,7 +194,7 @@
                 crossorigin="anonymous"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-        <link href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/arta.css' rel='stylesheet'/>
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/monokai-sublime.min.css' rel='stylesheet'/>
 
         <!--<script type="text/javascript" src="jquery.youtube.js"></script>-->
         <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
@@ -196,17 +207,16 @@
             });
 
             function onYouTubeIframeAPIReady() {
-                console.log('load api');
                 $('.embed-video').embedVideo({
                     enablejsapi: 1,
+                    //origin: 'https://mahlenko.github.io',
                     callback: function(iframe) {
                         player = new YT.Player(iframe, {
                             events: {
                                 'onReady': function(){
-                                    player.playVideo();
-                                    setTimeout(function () {
+                                    if (!$(iframe).parent().data('autoplay')) {
                                         player.playVideo();
-                                    }, 1000)
+                                    }
                                 }
                             }
                         });
