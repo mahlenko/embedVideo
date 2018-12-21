@@ -209,7 +209,7 @@ function onYouTubeIframeAPIReady() {
             function onYouTubeIframeAPIReady() {
                 $('.embed-video').embedVideo({
                     enablejsapi: 1,
-                    origin: 'https://mahlenko.github.io/',
+                    origin: 'mahlenko.github.io',
                     callback: function(iframe) {
                         player = new YT.Player(iframe, {
                             events: {
