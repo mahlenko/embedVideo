@@ -203,7 +203,7 @@
                         player = new YT.Player(iframe, {
                             events: {
                                 'onReady': function(){
-                                    player.stopVideo();
+                                    player.playVideo();
                                     setTimeout(function () {
                                         player.playVideo();
                                     }, 1000)
