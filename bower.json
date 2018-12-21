@@ -12,7 +12,7 @@
     "Sergey Makhlenko <https://t.me/SergeyMakhlenko>"
   ],
   "license": "MIT",
-  "homepage": "http://mediakit-dev.ru/jquery.embedVideo",
+  "homepage": "https://mahlenko.github.io/embedVideo/",
   "ignore": [
     "**/.*",
     "node_modules",

@@ -33,7 +33,7 @@
                         Адаптивное использование YouTube видео на странице, не замедляя ее загрузку.<br>
                     </p>
                     <p>
-                        <a href="https://github.com/mahlenko/embedVideo/archive/master.zip" class="btn btn-primary my-2">Скачать (.zip)</a>
+                        <a href="https://github.com/mahlenko/embedVideo/archive/v1.1.zip" class="btn btn-primary my-2">Скачать (.zip)</a>
                         <a href="https://github.com/mahlenko/embedVideo" class="btn btn-secondary my-2">Открыть на GitHub</a>
                     </p>
                 </div>
@@ -198,7 +198,7 @@ function onYouTubeIframeAPIReady() {
 
         <!--<script type="text/javascript" src="jquery.youtube.js"></script>-->
         <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
-        <script type="text/javascript" src="jquery.embedVideo.js"></script>
+        <script type="text/javascript" src="jquery.embedVideo.js?v=1.1"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 $('pre code').each(function(i, block) {
@@ -209,7 +209,7 @@ function onYouTubeIframeAPIReady() {
             function onYouTubeIframeAPIReady() {
                 $('.embed-video').embedVideo({
                     enablejsapi: 1,
-                    //origin: 'https://mahlenko.github.io',
+                    origin: 'https://mahlenko.github.io/',
                     callback: function(iframe) {
                         player = new YT.Player(iframe, {
                             events: {
