@@ -55,6 +55,10 @@
              */
             imagePlayOpacity: .85,
             /**
+             * Callback функция по клику на превью
+             */
+            callback: function() {},
+            /**
              * Параметр listType в сочетании с параметром list определяет загружаемый в проигрыватель контент.
              * Допустимые значения: playlist, search и user_uploads.
              *
@@ -227,6 +231,7 @@
         {
             var query = pluginMethods.queryBuild(options);
             $this.html('<iframe src="https://www.youtube.com/embed/'+ options.id +'?'+query+'" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+            options.callback.call($this, $this.find('iframe')[0]);
         },
 
         /**
@@ -236,7 +241,7 @@
         queryBuild: function(options)
         {
             /* Пропустить настройки плагина, всё остальное в query */
-            var skip = ['sizePreview', 'autoSizePreview', 'alternativeCover', 'imagePlayContainer', 'imagePlayOpacity'];
+            var skip = ['callback', 'sizePreview', 'autoSizePreview', 'alternativeCover', 'imagePlayContainer', 'imagePlayOpacity'];
 
             var query = [];
             $.each(options, function(key, value){
@@ -244,7 +249,6 @@
                     query.push(key + '=' + value);
                 }
             });
-            console.log(query);
 
             return query.join('&');
         },
@@ -265,7 +269,6 @@
             if (height == 0) {
                 height = $this.attr('height');
             }
-
 
             /* Поиск и ссылки на превью размером подходящим под наш контейнер */
             if (options.autoSizePreview && options.sizePreview == '') {
